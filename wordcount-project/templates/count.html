@@ -1,0 +1,25 @@
+<script language="javascript">
+	function eraseText() {
+    document.getElementById("textbox").value = "";
+}
+</script>
+
+<p>
+Word count results from your text below:<br/> 
+<form action="{%  url 'count'  %}">
+	<textarea id="textbox" cols="80" rows="15" name="fulltext">{{ fulltext }}</textarea>
+	<br/> 
+	<input type="submit" value="Count Above Text!">
+	<input type="button" value="Clear" onclick="javascript:eraseText();"> 
+</form>
+
+<p>
+There are {{ count }} words in the above test
+<p>
+{% for word, wordtotal in sortedwords %}
+	{{ word }} : {{ wordtotal }}
+	<br/><br/>
+{% endfor %}
+
+
+{{ sortedwords }}
